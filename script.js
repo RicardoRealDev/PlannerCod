@@ -1,11 +1,4 @@
-// ===============================
-// CONFIGURAÇÕES
-// ===============================
 
-/** Limite de palavras por linha nas notas.
- *  Ao ultrapassar, o texto é reformatado com quebra automática.
- *  Troque este valor se quiser outro limite.
- */
 const LIMITE_PALAVRAS_LINHA = 12;
 
 
@@ -193,7 +186,7 @@ function estaAtrasada(t){
   return dt < new Date();
 }
 
-// cartão de tarefa (sem o botão "⋯")
+// cartão de tarefa 
 function criarCartaoTarefa(t){
   const el = document.createElement('div');
   el.className = 'tarefa' + (t.concluida? ' concluida':'' );
@@ -301,7 +294,7 @@ function alternarConcluida(id, valor){
 
 
 // ===============================
-// TAREFAS CONCLUÍDAS (RODAPÉ DO PAINEL)
+// TAREFAS CONCLUÍDAS 
 // ===============================
 
 function renderizarConcluidas(){
@@ -328,7 +321,7 @@ function renderizarConcluidas(){
 
 
 // ===============================
-// BLOCOS DE NOTAS (ESTILO NOTAS DA APPLE)
+// BLOCOS DE NOTAS
 // ===============================
 
 let NOTA_CTX = { blocoId:null, notaId:null };
@@ -378,7 +371,7 @@ function criarCartaoBloco(bloco){
   topo.appendChild(inputTitulo);
   topo.appendChild(excluir);
 
-  // nova nota (TEXTAREA auto-expansível + quebra automática por limite de palavras)
+  // nova nota 
   const nova = document.createElement('div');
   nova.className = 'bloco-nova-nota';
 
@@ -499,7 +492,7 @@ function renderizarTudo(){
 }
 
 // ===============================
-// ANIMAÇÃO (opcional: fade-in por letra)
+// ANIMAÇÃO 
 // ===============================
 function animarDigitacao(){
   const alvosPadrao = document.querySelectorAll('.cabecalho .titulo strong');
