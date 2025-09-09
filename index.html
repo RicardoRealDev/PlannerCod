@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Planner Semanal</title>
+  <!-- Mantém os mesmos ids/classes esperados pelo script.js -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="icon/favicon.png" />
+</head>
+<body>
+  <div class="container">
+    <!-- TOPO / HEADER -->
+    <header class="cabecalho">
+      <div class="titulo">
+        <span class="icone">
+    <!-- Ícone calendário (SVG) -->
+          <img class="icone" src="/Icon/eu.jfif" width="70px">
+        </span>
+          <div>
+            <strong class="digitavel">Planner Semanal</strong>
+            <small class="digitavel">Feito por Ricardo Real</small>
+          </div>
+      </div>
+
+
+      <!-- CONTROLES (ids preservados para o JS) -->
+      <div class="controles" role="group" aria-label="Navegação e ações">
+        <div class="grupo-controles">
+          <button class="botao" id="semanaAnterior" aria-label="Semana anterior">◀</button>
+          <button class="botao destaque" id="hojeBotao">Hoje</button>
+          <button class="botao" id="semanaProxima" aria-label="Próxima semana">▶</button>
+        </div>
+
+        <div class="grupo-controles">
+          <label class="rotulo" for="pularData">Ir para</label>
+          <input type="date" class="entrada" id="pularData" />
+        </div>
+
+        <div class="grupo-controles grupo-busca">
+          <label class="rotulo" for="busca">Buscar</label>
+          <input type="search" class="entrada busca" id="busca" placeholder="Título, notas..." />
+        </div>
+
+        <button class="botao primario" id="novaTarefa">+ Nova tarefa</button>
+      </div>
+    </header>
+
+    <!-- PAINEL PRINCIPAL -->
+    <section class="painel">
+      <!-- BARRA DA SEMANA -->
+      <div class="barra-semana">
+        <div class="semana-info">
+          <span class="suave">Semana</span>
+          <span id="rotuloSemana" class="rotulo-semana">--</span>
+        </div>
+        <div class="resumo">
+          <span id="estatisticas" class="pilula">0 tarefas</span>
+        </div>
+      </div>
+
+      <!-- GRADE (o JS insere as colunas/dias aqui) -->
+      <div class="grade" id="gradeSemana" aria-live="polite"></div>
+
+      <!-- RODAPÉ DE AJUDA -->
+      <div class="painel-rodape">
+        <p class="ajuda">
+          Dica: dê <b>duplo clique</b> em um dia para adicionar rapidamente uma tarefa.
+          Use o menu <b>⋯</b> do card para <i>duplicar</i> ou <i>exportar/importar</i>.
+         
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <!-- MODAL (ids preservados) -->
+  <dialog id="modalTarefa">
+    <form method="dialog" id="formTarefa" class="formulario">
+      <div class="modal-cabecalho">
+        <strong id="tituloModal">Nova tarefa</strong>
+        <button class="botao fechar" id="fecharModal" value="cancel" aria-label="Fechar modal">✕</button>
+      </div>
+
+      <div class="modal-corpo">
+        <div class="linha-form duas-colunas">
+          <label class="campo">
+            <span class="rotulo">Título</span>
+            <input class="entrada" id="fTitulo" required maxlength="80" placeholder="Ex.: Reunião com equipe" />
+          </label>
+          <label class="campo">
+            <span class="rotulo">Data</span>
+            <input type="date" class="entrada" id="fData" required />
+          </label>
+        </div>
+
+        <div class="linha-form duas-colunas">
+          <label class="campo">
+            <span class="rotulo">Hora</span>
+            <input type="time" class="entrada" id="fHora" />
+          </label>
+          <label class="campo">
+            <span class="rotulo">Prioridade</span>
+            <select id="fPrioridade" class="entrada">
+              <option value="1">Baixa</option>
+              <option value="2">Média</option>
+              <option value="3">Alta</option>
+            </select>
+          </label>
+        </div>
+
+        <label class="campo">
+          <span class="rotulo">Notas</span>
+          <textarea id="fNotas" rows="4" placeholder="Detalhes, links, pauta..." class="entrada"></textarea>
+        </label>
+      </div>
+
+      <div class="modal-rodape">
+        <button class="botao perigo" id="excluirBotao" type="button" style="display:none">Excluir</button>
+        <button class="botao primario" id="salvarBotao" value="default">Salvar</button>
+      </div>
+    </form>
+  </dialog>
+    <section class="blocos-notas">
+      <div class="notas-cabecalho">
+        <h2 class="notas-titulo">🗒️ Blocos de notas</h2>
+        <button class="botao primario" id="novoBlocoBtn">+ Novo bloco</button>
+      </div>
+
+      <div id="listaBlocos" class="lista-blocos">
+        <!-- preenchido via JS -->
+      </div>
+    </section>
+ 
+  <script src="script.js"></script>
+</body>
+</html>
